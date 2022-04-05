@@ -1,14 +1,13 @@
 #include <random>
 #include <iostream>
+
 #include "Player.h"
 #include "Monster.h"
 
-Player::Player() :Object(Object::Type::player, 0, 1, 0)
+Player::Player(): Object(Object::Type::player, 0, 1, 0)
 {
 	levelUp();
 }
-
-
 
 void Player::levelUp()
 {
@@ -156,5 +155,3 @@ std::ostream& operator<<(std::ostream& o, const std::map<Item::Type, std::unique
 		};
 	return o;
 }
-
-
