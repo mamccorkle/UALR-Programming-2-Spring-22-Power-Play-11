@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PowerPlay 11", "PowerPlay 11.vcxproj", "{7E29AD47-A6BC-4779-ACB2-503C6355AFAE}"
 EndProject
@@ -26,6 +26,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {63B44D7B-3734-4A15-BB79-39803C98783F}
+		SolutionGuid = {7A42D45B-BFD5-4559-8784-ADF53C07C5A5}
 	EndGlobalSection
 EndGlobal

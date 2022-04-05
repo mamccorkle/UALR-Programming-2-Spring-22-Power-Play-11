@@ -1,14 +1,18 @@
 *
 !.gitignore
 
-.vs/*
-x64/*
-
+## Dont ignore:
 !**/*.cpp
 !**/*.h
 
 !*.cpp
 !*.h
+
+!*.md
+
+## Do ignore:
+.vs/*
+x64/*
 
 *.obj
 *.tlog
