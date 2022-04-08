@@ -9,6 +9,18 @@
 #### Instructions:
 
 > Apply the Rule of 5 to the Player class
+> 
+> 
+> 
+> Rule of 5:
+> 
+> * Copy Constructor
+> * Move Constructor
+> * Assignment Operator Overload
+> * Move Assignment Operator Overload
+> * Destructor (That can be virtual)
+>   
+>   
 
 #### Submission Due Date:
 
