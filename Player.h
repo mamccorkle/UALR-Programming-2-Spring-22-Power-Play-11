@@ -10,7 +10,7 @@
 	{
 	public:
 		// Rule of 5
-		//	   To promote deep copying and efficiency of moving resources:
+		//	   To promote deep copying and efficiency of moving resources
 		// 
 		// Rule of 3:
 		//     Copy Constructor
@@ -54,6 +54,7 @@
 		void defend(int damage) override;
 		void print(std::ostream& o) const override;	
 		void heal();
+
 
 	private:
 		std::map<Item::Type, std::unique_ptr<Item>> inventory;

@@ -4,9 +4,128 @@
 #include "Player.h"
 #include "Monster.h"
 
+// Default Constructor:
 Player::Player(): Object(Object::Type::player, 0, 1, 0)
 {
+	std::cout << "** Default Constructor...\n";
+
 	levelUp();
+}
+
+// Copy Constructor:
+// To copy the Player class object we have three elements that we
+// need to work with: Object, SP, and Inventory. The Object class
+// is inherited and doesnt make use of pointers. The spell points 
+// (SP) is the same in that it doesnt use pointers. So, those are 
+// copied straight over. The inventory map does make use of 
+// pointers for the Item object. To recreate the map using
+// unique pointers a loop was created to iterate through each pair
+// in the inventory and makes a new unique pointer for each Item.
+Player::Player( const Player& src ) noexcept
+	: Object( src.name, src.strength, src.health, src.level ),
+	SP{ src.SP }
+{
+	std::cout << "** Copy Constructor...\n";
+
+	// Copy the pointer items into new memory locations for this object:
+	for (const auto& item : src.inventory)
+	{
+		inventory.emplace(std::make_pair(item.first, std::make_unique<Item>(*item.second)));
+	}
+}
+
+// Move Copy Constructor:
+// Like the Copy constructor the Object class and SP are copied
+// over and reset within the body of the constructor to a default
+// value of 0. The inventory is moved directly over without 
+// any modification
+Player::Player( Player&& src ) noexcept
+	: Object( src.name, src.strength, src.health, src.level ),
+	inventory{ std::move(src.inventory) },
+	SP{ src.SP }
+{
+	std::cout << "** Move Copy Constructor...\n";
+
+	// Destroyed the link to the original inventory items by 
+	// using the std::move command. Next, reset the remaining 
+	// nonpointer based members.
+	src.name = Object::Type::player;
+	src.strength = 0;
+	src.health = 0;
+	src.level = 0;
+	src.SP = 0;
+}
+
+// Assignment Operator Overload:
+// This is a copy assignment from one memory location to
+// another much like the Copy Constructor. The difference
+// here is that we check if the input source is the same
+// as the class object we are working on, if it is just
+// return itself.
+Player& Player::operator=( const Player& src ) noexcept
+{
+	std::cout << "** Assignment Operator Overload...\n";
+
+	// Are we trying to copy ourselves:
+	if (this == &src)
+		return *this;
+
+	// Copy the nonpointers:
+	name = src.name;
+	strength = src.strength;
+	health = src.health;
+	level = src.level;
+	SP = src.SP;
+
+	// Copy the pointer items into new memory locations for this object:
+	for (const auto& item : src.inventory)
+	{
+		inventory.emplace(std::make_pair(item.first, std::make_unique<Item>(*item.second)));
+	}
+	
+	return *this;
+}
+
+// Move Assignment Operator Overload:
+//
+// This is a move assignment from one memory location to
+// another, much like the Move Copy Constructor. The 
+// difference here is that we check if the input source 
+// is the same as the class object we are working on, if
+// it is just return itself.
+Player& Player::operator=( Player&& src ) noexcept
+{
+	std::cout << "** Move Assignment Operator Overload...\n";
+
+	// Are we trying to copy ourselves:
+	if (this == &src)
+		return *this;
+
+	// Copy the nonpointers:
+	name = src.name;
+	strength = src.strength;
+	health = src.health;
+	level = src.level;
+	SP = src.SP;
+
+	// Move the inventory over:
+	inventory = std::move(src.inventory);
+
+	// Reset to default values:
+	src.name = Object::Type::player;
+	src.strength = 0;
+	src.health = 0;
+	src.level = 0;
+
+	return *this;
+}
+
+// Destructor:
+Player::~Player()
+{
+	// We are using smart pointers so nothing to be done here...
+
+	std::cout << "** Destructor...\n";
 }
 
 void Player::levelUp()

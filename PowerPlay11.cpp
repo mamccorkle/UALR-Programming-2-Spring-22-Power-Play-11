@@ -32,6 +32,37 @@ void bringOutYourDead(std::vector<std::unique_ptr<Object>>& objects);
 
 int main()
 {
+	/*
+		Rule of 5 Test Examples:
+	*/
+	{
+
+		// 1) Create a default Player object, player1:
+		Player player1{ };
+
+		// 2) Copy the player1 into player2 preserving player1 using Copy Constructor Test:
+		Player player2{ player1 };
+
+		// 3) Move player2 into player3 eleminating player2 using Move Copy Constructor:
+		Player player3{ std::move(player2) };
+
+		// 4) Copy player3 back into player2, preserving player3 using Assignment Operator Overload:
+		player2 = player3;
+
+		// 5) Move player3 into player4, eliminating player3 using Move Assignment Operator Overload:
+		Player player4{ };
+		player4 = std::move(player3);
+
+		// 6) Try to copy player4 into itself using Assignment Operator Overload:
+		player4 = player4;
+
+		// 7) Try to move player4 into itself using Move Assignment Operator Overload:
+		player4 = std::move(player4);
+
+		system("pause");
+
+	}
+
 	std::vector<std::unique_ptr<Object>> objects;
 	objects.push_back(std::make_unique<Player>());
 
