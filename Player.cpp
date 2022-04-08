@@ -34,7 +34,7 @@ Player::Player( const Player& src ) noexcept
 	}
 }
 
-// Move Copy Constructor:
+// Move Constructor:
 // Like the Copy constructor the Object class and SP are copied
 // over and reset within the body of the constructor to a default
 // value of 0. The inventory is moved directly over without 
@@ -44,7 +44,7 @@ Player::Player( Player&& src ) noexcept
 	inventory{ std::move(src.inventory) },
 	SP{ src.SP }
 {
-	std::cout << "** Move Copy Constructor...\n";
+	std::cout << "** Move Constructor...\n";
 
 	// Destroyed the link to the original inventory items by 
 	// using the std::move command. Next, reset the remaining 

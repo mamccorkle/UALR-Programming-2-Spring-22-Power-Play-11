@@ -43,7 +43,7 @@ int main()
 		// 2) Copy the player1 into player2 preserving player1 using Copy Constructor Test:
 		Player player2{ player1 };
 
-		// 3) Move player2 into player3 eleminating player2 using Move Copy Constructor:
+		// 3) Move player2 into player3 eleminating player2 using Move Constructor:
 		Player player3{ std::move(player2) };
 
 		// 4) Copy player3 back into player2, preserving player3 using Assignment Operator Overload:

@@ -18,7 +18,7 @@
 		//     Destructor (That can be virtual)
 		// 
 		// Rule of 5 (Addition of the following two):
-		//     Move Copy Constructor
+		//     Move Constructor
 		//     Move Assignment Operator
 		// 
 		//     Note: The last two were added as an effeciency measure, when source 
@@ -31,7 +31,7 @@
 		// Copy Constructor:
 		Player( const Player& src ) noexcept;
 
-		// Move Copy Constructor:
+		// Move Constructor:
 		Player( Player&& src ) noexcept;
 
 		// Assignment Operator Overload:
