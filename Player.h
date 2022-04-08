@@ -9,7 +9,40 @@
 	class Player: public Object
 	{
 	public:
+		// Rule of 5
+		//	   To promote deep copying and efficiency of moving resources:
+		// 
+		// Rule of 3:
+		//     Copy Constructor
+		//     Overload Assignment Operator
+		//     Destructor (That can be virtual)
+		// 
+		// Rule of 5 (Addition of the following two):
+		//     Move Copy Constructor
+		//     Move Assignment Operator
+		// 
+		//     Note: The last two were added as an effeciency measure, when source 
+		//           object needed copying and assigning, but the source is not 
+		//           needed afterwards.
+
+		// Default Constructor:
 		Player();
+
+		// Copy Constructor:
+		Player( const Player& src ) noexcept;
+
+		// Move Copy Constructor:
+		Player( Player&& src ) noexcept;
+
+		// Assignment Operator Overload:
+		Player& operator=( const Player& src ) noexcept;
+		
+		// Move Assignment Operator Overload:
+		Player& operator=( Player&& ) noexcept;
+
+		// Destructor
+		~Player();
+
 		void levelUp();
 
 		void update(std::vector<std::unique_ptr<Object>>& objects) override;

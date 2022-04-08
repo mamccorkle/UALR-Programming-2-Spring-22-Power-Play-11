@@ -1,16 +1,28 @@
-*
-!.gitignore
+##*
+##!.gitignore
 
 ## Dont ignore:
+
+# CPP/H files in subdirectories:
 !**/*.cpp
 !**/*.h
 
+# CPP/H files in current directory:
 !*.cpp
 !*.h
 
+# README.md
 !*.md
 
+# Project Files:
+!*.sln
+!*.vcxproj
+!*.user
+!*.txt
+
+
 ## Do ignore:
+
 .vs/*
 x64/*
 
